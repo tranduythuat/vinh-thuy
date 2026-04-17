@@ -388,6 +388,111 @@
             zoomInElements.forEach((element) => observer.observe(element));
         };
     </script>
+    <script>
+        const qs = (selector, parent = document) => parent.querySelector(selector);
+        const qsa = (selector, parent = document) => parent.querySelectorAll(selector);
+        function initFAQ() {
+            const items = qsa(".faq-item");
+
+            function openItem(el) {
+                const content = qs(".faq-content", el);
+                const icon = qs(".icon", el);
+                if (!content || !icon) return;
+
+                el.classList.add("active");
+
+                gsap.to(content, { height: "auto", duration: 0.4, ease: "power2.out" });
+                gsap.to(icon, { rotate: 180, duration: 0.3, onComplete: () => (icon.textContent = "−") });
+            }
+
+            function closeItem(el) {
+                const content = qs(".faq-content", el);
+                const icon = qs(".icon", el);
+                if (!content || !icon) return;
+
+                el.classList.remove("active");
+
+                gsap.to(content, { height: 0, duration: 0.3, ease: "power2.inOut" });
+                gsap.to(icon, { rotate: 0, duration: 0.3, onComplete: () => (icon.textContent = "+") });
+            }
+
+            items.forEach((item) => {
+                const header = qs(".faq-header", item);
+                const content = qs(".faq-content", item);
+                if (!header) return;
+
+                if (item.classList.contains("active")) {
+                    gsap.set(content, { height: "auto" });
+                }
+
+                header.addEventListener("click", () => {
+                    const isOpen = item.classList.contains("active");
+
+                    items.forEach((el) => {
+                        if (el !== item) closeItem(el);
+                    });
+
+                    isOpen ? closeItem(item) : openItem(item);
+                });
+            });
+        }
+
+
+        function initMusic() {
+            const audio = qs("#audio");
+            const icon = qs("#iconSvg");
+            const btn = qs("#player-btn");
+
+            if (!audio || !icon || !btn) return;
+
+            btn.addEventListener("click", () => {
+                if (!audio.src) return;
+                audio.paused ? audio.play() : audio.pause();
+            });
+
+            audio.addEventListener("play", () =>
+                icon.classList.add("spin")
+            );
+            audio.addEventListener("pause", () =>
+                icon.classList.remove("spin")
+            );
+        }
+
+        function initSlider() {
+            const mainSwiper = new Swiper(".main-swiper", {
+                spaceBetween: 10,
+                navigation: {
+                    prevEl: ".swiper-button-prev",
+                    nextEl: ".swiper-button-next",
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    dynamicBullets: true,
+                },
+                // thumbs: {
+                //   swiper: thumbSwiper,
+                // },
+                autoplay: {
+                    delay: 4000, // thời gian giữa các lần chuyển (ms)
+                    disableOnInteraction: true, // không tắt khi người dùng bấm
+                },
+
+                loop: true, // lặp lại ảnh
+                effect: "fade", // hiệu ứng chuyển mượt
+                fadeEffect: { crossFade: true },
+                speed: 1000 // tốc độ chuyển (ms)
+            });
+        }
+
+        function init() {
+            gsap.registerPlugin(ScrollTrigger);
+            // initFAQ();
+            // initMusic();
+            initSlider();
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const scripConfirmtURL = '?sheet=confirm';
