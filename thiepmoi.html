@@ -1,206 +1,550 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinh & Thủy</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Thông tin Open Graph cho ảnh đại diện -->
+    <title>Thủy Bùi & Vinh Thái</title>
 
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+    <meta property="og:image" content="" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="400" />
 
-        .invitation-card {
-            background: white;
-            max-width: 600px;
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            animation: fadeIn 1s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px 20px;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-
-        .header::before {
-            content: '♥';
-            font-size: 60px;
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: heartbeat 1.5s infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.1); }
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-top: 40px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .header p {
-            font-size: 1.2em;
-            font-style: italic;
-        }
-
-        .content {
-            padding: 40px;
-            text-align: center;
-        }
-
-        .couple-names {
-            font-size: 3em;
-            color: #764ba2;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-
-        .ampersand {
-            font-size: 0.8em;
-            color: #ff6b9d;
-            margin: 0 10px;
-        }
-
-        .date-location {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border-left: 5px solid #667eea;
-        }
-
-        .date-location h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .detail {
-            margin: 15px 0;
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        .detail strong {
-            color: #764ba2;
-        }
-
-        .message {
-            font-size: 1.1em;
-            line-height: 1.8;
-            color: #666;
-            margin: 20px 0;
-            font-style: italic;
-        }
-
-        .footer {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-
-        .decorative-line {
-            width: 200px;
-            height: 2px;
-            background: linear-gradient(to right, transparent, #764ba2, transparent);
-            margin: 20px auto;
-        }
-
-        @media (max-width: 600px) {
-            .couple-names {
-                font-size: 2em;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-        }
-    </style>
+    <!-- Các thông tin khác cho Open Graph -->
+    <meta property="og:title" content="Thủy Bùi & Vinh Thái" />
+    <meta property="og:description" content="26.09.2026" />
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="./thiep/xacnhan.css" />
+    <link rel="stylesheet" href="./thiep/response.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- <link href="./thiep/jquery.fancybox.min.css" rel="stylesheet" />
+    <script src="./thiep/jquery.fancybox.min.js"></script> -->
 </head>
+
 <body>
-    <div class="invitation-card">
-        <div class="header">
-            <h1>Thiệp Mời Cưới</h1>
-            <p>Trân trọng kính mời</p>
-        </div>
+    <div id="loading-container" class="loading-container">
+        <div class="spinner"></div>
+    </div>
+    <div class="container">
+        <div class="container-wrapper">
+            <div class="box-save">
+                <!-- <img src="thiep/images/logo.webp" class="logo" alt=""> -->
+                <label for="" class="inv">invitation</label>
+            </div>
+            <div class="box-content">
+                <lb class="dot"><i class="fa-solid fa-diamond"></i></lb>
+                <label for="" class="fade-down lb4">INVITE TO JOIN US</label>
+                <label for="" class="fade-down lb44"><i>/TRÂN TRỌNG KÍNH MỜI BẠN/</i></label>
+                <label for="" class="fade-up lb2">TO THE CELEBRATION OF OUR WEDDING</label>
+                <label for="" class="fade-up lb22"><i>/ĐẾN THAM DỰ LỄ THÀNH HÔN CỦA/</i></label>
+                <lb class="dot"><i class="fa-solid fa-diamond"></i></lb>
+                <label for="" class="zoom-in lb-time husband">Thuy Bui</label>
+                <label for="" class="zoom-in time-date">and</label>
+                <label for="" class="zoom-in lb-time wife">Vinh Thai</label>
+                <div class="box-icon">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/thuybui-vinhthai/DSC07242.jpg" alt="">
+                </div>
+                <label for="" class="lb5">Date & Time</label>
+                <label for="" class="lb55"><i>/Thời gian & Địa điểm/</i></label>
+                <lb class="dot"><i class="fa-solid fa-diamond"></i></lb>
+                <label for="" class="fade-up lb6">An Lam Retreats <br> Saigon River</label>
+                <label for="" class="fade-up lb7">Sảnh: Saigon River House</label>
+                <label for="" class="fade-up lb77">/Reception Hall: Saigon River House/</label>
+                <label for="" class="fade-up church">78/5 Khu phố Trung, Phường Bình Hòa, TP.HCM</label>
+                <label for="" class="fade-up churchh"><i>/78/5 Trung Quarter, Binh Hoa Ward, Ho Chi Minh City/</i></label>
+                <lb class="dot"><i class="fa-solid fa-diamond"></i></lb>
+                <label for="" class="zoom-in lb-time">SEPTEMBER 26, 2026 | 04:00 PM</label>
+                <label for="" class="zoom-in lb-timee"><i>/16h00 | 26.09.2026/</i></label>
+                <div class="map">
+                    <a href="https://maps.app.goo.gl/PpYWJ8f1hwidSjF18" class="link-map">MAPS <br />
+                        /XEM BẢN ĐỒ/</a>
+                </div>
+                <div class="img-center">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/thuybui-vinhthai/DSC07240.jpg" alt="" class="" />
+                </div>
+            </div>
+            <div class="box-timeline">
+                <lb class="lb-timeline">TIMELINE</lb>
+                <lb class="lb-timelinee"><i>/Lịch Trình/</i></lb>
+                <lb class="dot"><i class="fa-solid fa-diamond"></i></lb>
+                <div class="events">
+                    <div class="event" data-aos="zoom-in">
+                        <p>Welcome</br>/Đón khách/</p>
+                        <div class="icon">
+                            <img src="./thiep/images/photo.png" alt="photo" />
+                        </div>
+                        <span>04:00 PM</br>/16h00/</span>
+                    </div>
+                    <div class="event" data-aos="zoom-in">
+                        <p>Vows Ceremony </br>/Hôn lễ/</p>
+                        <div class="icon">
+                            <img src="./thiep/images/rings.png" alt="photo" />
+                        </div>
+                        <span>04:30 PM</br>/16h30/</span>
+                    </div>
+                    <div class="event" data-aos="zoom-in">
+                        <p>Cocktail Hour </br>/Giờ cocktail/</p>
+                        <div class="icon">
+                            <img src="./thiep/images/cocktail.png" alt="photo" />
+                        </div>
+                        <span>05:30 PM</br>/17h30/</span>
+                    </div>
+                    <div class="event" data-aos="zoom-in">
+                        <p>Dinner </br>/Ăn tối/</p>
+                        <div class="icon">
+                            <img src="./thiep/images/dinner.png" alt="photo" />
+                        </div>
+                        <span>06:30 PM</br>/18h30/</span>
+                    </div>
+                    <div class="event" data-aos="zoom-in">
+                        <p>Party </br>/Buổi tiệc/</p>
+                        <div class="icon">
+                            <img src="./thiep/images/party.png" alt="photo" />
+                        </div>
+                        <span>08:00 PM</br>/20h00/</span>
+                    </div>
 
-        <div class="content">
-            <div class="couple-names">
-                Vinh <br>
-                <span class="ampersand">&</span> <br>
-                Thủy
+                </div>
+            </div>
+            <section class="album">
+                <div class="content fade-in">
+                    <!-- <h2 class="text-title title fade-in">Album photo</h2> -->
+                    <div class="swiper main-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/thuybui-vinhthai/DSC07374.jpg" alt="" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/thuybui-vinhthai/DSC07443.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- <div class="slider">
+                <div class="slide">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/huy-chi/album/1.webp" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/huy-chi/album/2.webp" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/huy-chi/album/DSC07643.webp" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/huy-chi/album/DSC08670.webp" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/huy-chi/album/DSC09052.webp" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/huy-chi/album/JER00493.webp" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/huy-chi/album/JER01226.webp" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/huy-chi/album/JER07071.webp" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/huy-chi/album/JER09238.webp" style="object-fit: cover;object-position: 96% 100%;" alt="" />
+                </div>
+                <button class="btn btn-next">
+                    <i class="fa-solid fa-caret-right"></i>
+                </button>
+                <button class="btn btn-prev">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+            </div> -->
+            <div class="box-dress">
+                <label for="" class="lb-dress">dresscode</label>
+                <label for="" class="lb-dresss"><i>/Trang Phục/</i></label>
+                <lb class="dot"><i class="fa-solid fa-diamond"></i></lb>
+                <div class="dresscode">
+                    <div class="color-item">
+                        <div class="circle-box white" style="background-color: #000000;"></div>
+                    </div>
+                    <div class="color-item">
+                        <div class="circle-box beige" style="background-color: #C62828;"></div>
+                    </div>
+                    <div class="color-item">
+                        <div class="circle-box black" style="background-color: #8B4513;"></div>
+                    </div>
+                </div>
+                <div class="dresscode-images fade-up">
+                    <div class="photo-box photo1">
+                        <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/thuybui-vinhthai/DSC07404.jpg" class=""
+                            alt="" />
+                    </div>
+                    <div class="photo-box photo2">
+                        <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/thuybui-vinhthai/DSC07541.jpg" class="" style="object-position: 40% 50%;"
+                            alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="box-story">
+                <label for="" class="lb-story">our story</label>
+                <label for="" class="lb-storyy"><i>/Câu chuyện của chúng mình/</i></label>
+                <lb class="dot"><i class="fa-solid fa-diamond"></i></lb>
             </div>
 
-            <div class="decorative-line"></div>
-
-            <p class="message">
-                Chúng tôi trân trọng kính mời Quý khách đến dự<br>
-                buổi tiệc chung vui cùng gia đình chúng tôi
-            </p>
-
-            <div class="date-location">
-                <h3>📅 Thông Tin Tiệc Cưới</h3>
-                <div class="detail">
-                    <strong>Thời gian:</strong> 18:00, Chủ Nhật, 15/12/2024
+            <div class="our-sotry">
+                <div class="story story-1">
+                    <div class="icon">
+                        <img src="./thiep/images/g2781.png" alt="" />
+                    </div>
+                    <p>
+                        I choose you today everyday and in every lifetime. <br> I'll choose you
+                        only you
+                    </p>
+                    <div class="img-story">
+                        <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/thuybui-vinhthai/DSC07337.jpg"
+                            alt="" />
+                    </div>
                 </div>
-                <div class="detail">
-                    <strong>Địa điểm:</strong> Nhà Hàng Tiệc Cưới Riverside
-                </div>
-                <div class="detail">
-                    <strong>Địa chỉ:</strong> 123 Đường Lê Lợi, Quận 1, TP.HCM
+                <div class="story story-2">
+                    <div class="icon">
+                        <img src="./thiep/images/g2781.png" alt="" />
+                    </div>
+                    <p>
+                        The best day is nothing more than <br> you are noisy. I am smiling, so
+                        warm to live my life
+                    </p>
+                    <div class="img-story">
+                        <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/thuybui-vinhthai/DSC07373.jpg" style="object-position: 40% 50%;"
+                            alt="" />
+                    </div>
                 </div>
             </div>
+            <div class="album">
+                <label for="" class="in-album">Click here to upload your best pics to our digital photo album!<br>
+                    We can't wait to see our day through your eyes</label>
+                <a href="https://drive.google.com/drive/folders/1UhRuLMEcp3F1J52Lz1dgxuy2mK1Acqea?usp=sharing"
+                    class="album-anh">SHARE YOUR PHOTOS WITH US!</a>
+            </div>
+            <div class="box-title">
+                <p class="fade-down til1">
+                    WE SINCERELY HOPE TO HAVE YOU THERE ON THIS IMPORTANT DAY <br />
+                    TO WITNESS AND SHARE THIS HAPPINESS WITH US.
+                </p>
+                <lb class="fade-up til2">Thank you very much.</lb>
+                <lb class="dot2"><i class="fa-solid fa-diamond"></i></lb>
+            </div>
+            <div class="box-form">
+                <form action="" name="dung-truong">
+                    <div class="feed-info">
+                        <label for="" class="lb-form">Attendance confirmation</label>
+                        <label for="" class="lb-formm"><i>/Xác nhận tham dự/</i></label>
+                        <lb class="dot3"><i class="fa-solid fa-diamond"></i></lb>
+                        <label for="" class="in-fe">PLEASE CONFIRM YOUR ATTENDANCE WITH US <br />
+                            BY AUGUST 25, 2026</label>
+                        <label for="" class="in-fee"><i>/ Dành chút thời gian để xác nhận tham dự <br />
+                                giúp Thủy Bùi & Vinh Thái trước ngày 25.08.2026 nhé! /</i></label>
+                        <lb class="dot3"><i class="fa-solid fa-diamond"></i></lb>
+                        <label for="" class="in-fe">Confirming attendance at the party. <br />
+                            This helps us to host you more thoughtfully and fully. <br />
+                            Thank you!!!</label>
+                        <label for="" class="in-fee"><i>/Hãy đến buổi tiệc và làm cho ngày vui của chúng mình trở nên
+                                <br />
+                                đặc biệt hơn bằng sự hiện diện của bạn nhé!/</i></label>
+                    </div>
+                    <hr class="hr1" />
+                    <div class="container-check">
+                        <input class="box-feed" type="radio" value="YES" id="yes" name="CONFIRM" checked/>
+                        <label class="check-box" for="yes">
+                            <h3 class="til-check">YES</h3>
+                            <h3 class="til-check"><i>/CÓ/</i></h3>
+                        </label>
+                        <input class="box-feed" type="radio" value="NO" id="no" name="CONFIRM" />
+                        <label class="check-box" for="no">
+                            <h3 class="til-check">NO</h3>
+                            <h3 class="til-check"><i>/KHÔNG/</i></h3>
+                        </label>
+                    </div>
+                    <div class="box-ten">
+                        <input required class="inp-ten" type="text" name="NAME" placeholder="Name /Tên/" />
+                    </div>
+                    <div class="container-check">
+                        <input class="box-feed" type="radio" value="NON-VEGETARIAN" id="non-stay-" name="VEGETARIAN" checked/>
+                        <label class="check-box2" for="non-stay-">
+                            <h3 class="til-check">NON - VEGETARIAN</h3>
+                            <h3 class="til-check"><i>/KHÔNG ĂN CHAY</i></h3>
+                        </label>
+                        <input class="box-feed" type="radio" value="VEGETARIAN" id="veg" name="VEGETARIAN" />
+                        <label class="check-box2" for="veg">
+                            <h3 class="til-check">VEGETARIAN</h3>
+                            <h3 class="til-check"><i>/ĂN CHAY</i></h3>
+                        </label>
+                    </div>
+                    <div class="box-ten">
+                        <input class="inp-ten" type="text" name="GUEST"
+                            placeholder="Number of attendance /Số khách tham dự/" />
+                    </div>
+                    <!-- <div class="til">
+                        <label for="" class="title">NUMBER OF ATTENDANCE <br />
+                            <i>/Số khách tham dự/</i></label>
+                        <select name="GUEST" class="guest">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div> -->
+                    <div class="form-group">
+                        <div class="subtitle">
+                            <p>We’d love to know if you’ll be staying overnight in Vung Tau</p>
+                            <p><i>/Cho tụi mình biết bạn có ở lại qua đêm không nhé/
+                                </i></p>
+                        </div>
+                        <div class="container-check">
+                            <input class="box-feed" type="radio" value="Yes" id="non-stay-overnight"
+                                name="stay_overnight" />
+                            <label class="check-box2" for="non-stay-overnight">
+                                <h3 class="til-check">Yes</h3>
+                                <h3 class="til-check"><i>/Đêm nữa/</i></h3>
+                            </label>
+                            <input class="box-feed" type="radio" value="No" id="stay-overnight" name="stay_overnight" />
+                            <label class="check-box2" for="stay-overnight">
+                                <h3 class="til-check">No</h3>
+                                <h3 class="til-check"><i>/Phải về thôi/</i></h3>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-ten">
+                        <textarea id="message" name="WISH" rows="4" cols="50" placeholder="WRITE A WISH FOR THE BRIDE AND GROOM
+/Gửi lời chúc đến cô dâu và chú rể/"></textarea>
+                    </div>
+                    <div class="wrapper">
+                        <button class="xacnhan" type="submit">SUBMIT</button>
+                    </div>
+                </form>
 
-            <div class="decorative-line"></div>
 
-            <p class="message">
-                Sự hiện diện của Quý khách là niềm vinh hạnh<br>
-                cho gia đình chúng tôi!
-            </p>
-        </div>
-
-        <div class="footer">
-            <p>💝 Rất hân hạnh được đón tiếp 💝</p>
+                <div class="boxx-imgend">
+                    <img src="thiep/images/qrcode.jpg" alt="">
+                    <p>Send a wedding gift to the bride and groom!</p>
+                </div>
+            </div>
+            <div class="end">
+                <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/thuybui-vinhthai/DSC07234.jpg" alt="">
+            </div>
         </div>
     </div>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        window.onload = function () {
+            // Lấy tất cả các phần tử cho các hiệu ứng fade-down, fade-up, fade-right, fade-left, zoom-in
+            const fadeDownElements = document.querySelectorAll(
+                ".lb4, .lb44, .img-timeline, .img-dress, .til1"
+            ); // Các phần tử fade-down
+            const fadeUpElements = document.querySelectorAll(
+                ".lb2, .lb22, .lb6, .lb7, .lb77, .church, .churchh, .til2"
+            ); // Các phần tử fade-up
+            const fadeRightElements = document.querySelectorAll(".lb3, .story-1"); // Các phần tử fade-right
+            const fadeLeftElements = document.querySelectorAll(".lb3, .story-2"); // Các phần tử fade-left
+            const zoomInElements = document.querySelectorAll(
+                ".time-date, .lb-time, .lb-timee"
+            ); // Các phần tử zoom-in
+
+            // Cấu hình của IntersectionObserver
+            const options = {
+                root: null, // Theo mặc định là viewport
+                threshold: 0.5, // Kích hoạt khi 50% phần tử hiển thị trong viewport
+            };
+
+            // Tạo đối tượng IntersectionObserver để theo dõi sự xuất hiện và mất đi của phần tử
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Nếu phần tử xuất hiện trong viewport, thêm lớp "visible"
+                        entry.target.classList.add("visible");
+                    } else {
+                        // Nếu phần tử không còn trong viewport, xóa lớp "visible"
+                        entry.target.classList.remove("visible");
+                    }
+                });
+            }, options);
+
+            // Quan sát các phần tử theo từng hiệu ứng
+            fadeDownElements.forEach((element) => observer.observe(element));
+            fadeUpElements.forEach((element) => observer.observe(element));
+            fadeRightElements.forEach((element) => observer.observe(element));
+            fadeLeftElements.forEach((element) => observer.observe(element));
+            zoomInElements.forEach((element) => observer.observe(element));
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const scripConfirmtURL = 'https://script.google.com/macros/s/AKfycbx_NZ63HU8pO-JIpj7uOAGopP1MORoc1VHNbQTEkVu_tvL_cDSdrO8Yp88-wcj9FIorJg/exec?sheet=confirm';
+        const form = document.forms["dung-truong"];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // Ngừng việc gửi form mặc định
+
+            document.getElementById('loading-container').style.display = 'flex';
+
+            let formData = new FormData(form);
+            let data = Object.fromEntries(formData.entries());
+
+            const confirm = data.CONFIRM;
+            const name = data.NAME;
+            const dietary = data.VEGETARIAN;
+            const guest_number = data.GUEST;
+            const stay = data.stay_overnight ?? "";
+            const wish = data.WISH;
+
+            // Gửi dữ liệu form đi
+            fetch(scripConfirmtURL, {
+                method: 'POST',
+                body: new URLSearchParams({
+                    name,
+                    confirm,
+                    dietary,
+                    guest_number,
+                    stay,
+                    wish
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Nếu dữ liệu gửi thành công, làm mới lại form
+                        // Làm mới lại form
+
+                        document.getElementById('loading-container').style.display = 'none';
+                        form.reset();
+
+                        Swal.fire({
+                            title: 'Thành công',
+                            text: 'Cảm ơn bạn đã gửi phản hồi, thông tin đã được gửi đến dâu rể rồi nhaa <3',
+                            imageWidth: 300,
+                            imageHeight: 200,
+                            confirmButtonText: 'ĐÓNG',
+                            background: '#f8f8f8',
+                            padding: '20px',
+                            customClass: {
+                                popup: 'custom-popup',
+                                title: 'custom-title',
+                                confirmButton: 'custom-confirm-button'
+                            },
+                            didOpen: () => {
+                                document.querySelector('.swal2-popup').style.borderRadius = '10px'; // Bo tròn các góc
+                            }
+                        });
+                    } else {
+                        // Nếu gặp lỗi khi gửi dữ liệu
+                        console.error('Error!', response);
+                        form.reset();
+
+                        document.getElementById('loading-container').style.display = 'none';
+
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: 'Lỗi mất rồi thử lại giúp chúng mình nhé',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                })
+                .catch(error => {
+                    // Xử lý lỗi nếu có
+                    form.reset();
+                    console.error('Error!', error.message);
+
+                    document.getElementById('loading-container').style.display = 'none';
+
+                    Swal.fire({
+                        title: 'Oops!',
+                        text: 'Lỗi mất rồi thử lại giúp chúng mình nhé',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
+        });
+    </script>
+    <script>
+        const modalTriggerButtons = document.querySelectorAll(
+            "[data-modal-target]"
+        );
+        const modals = document.querySelectorAll(".modal");
+        const modalCloseButtons = document.querySelectorAll(".modal-close");
+
+        modalTriggerButtons.forEach((elem) => {
+            elem.addEventListener("click", (event) =>
+                toggleModal(event.currentTarget.getAttribute("data-modal-target"))
+            );
+        });
+        modalCloseButtons.forEach((elem) => {
+            elem.addEventListener("click", (event) =>
+                toggleModal(event.currentTarget.closest(".modal").id)
+            );
+        });
+        modals.forEach((elem) => {
+            elem.addEventListener("click", (event) => {
+                if (event.currentTarget === event.target)
+                    toggleModal(event.currentTarget.id);
+            });
+        });
+
+        // Maybe also close with "Esc"...
+        document.addEventListener("keydown", (event) => {
+            if (
+                event.keyCode === 27 &&
+                document.querySelector(".modal.modal-show")
+            ) {
+                toggleModal(document.querySelector(".modal.modal-show").id);
+            }
+        });
+
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+
+            if (getComputedStyle(modal).display === "flex") {
+                // alternatively: if(modal.classList.contains("modal-show"))
+                modal.classList.add("modal-hide");
+                setTimeout(() => {
+                    document.body.style.overflow = "initial"; // Optional: in order to enable/disable page scrolling while modal is hidden/shown - in this case: "initial" <=> "visible"
+                    modal.classList.remove("modal-show", "modal-hide");
+                    modal.style.display = "none";
+                }, 200);
+            } else {
+                document.body.style.overflow = "hidden"; // Optional: in order to enable/disable page scrolling while modal is hidden/shown
+                modal.style.display = "flex";
+                modal.classList.add("modal-show");
+            }
+        }
+    </script>
+    <script>
+        // const musicCircle = document.getElementById("musicCircle");
+        // const audio = document.getElementById("audio");
+
+        // Thêm sự kiện khi nhấn vào hình tròn
+        // musicCircle.addEventListener("click", function () {
+        // Nếu nhạc đang dừng và hình tròn không xoay
+        //     if (audio.paused) {
+        //         audio.play(); // Phát nhạc
+        //         musicCircle.classList.add("spin"); // Bắt đầu xoay liên tục
+        //     } else {
+        //         audio.pause(); // Dừng nhạc nếu đang phát
+        //         musicCircle.classList.remove("spin"); // Dừng xoay
+        //     }
+        // });
+    </script>
+    <script src="./thiep/thiep.js"></script>
 </body>
+
 </html>

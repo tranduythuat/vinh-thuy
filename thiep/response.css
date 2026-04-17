@@ -1,0 +1,104 @@
+@media (max-width: 500px) {
+    .box-timeline .events .event p,
+    .box-timeline .events .event span {
+        font-size: calc((9.2 / 500) * 100vw);
+    }
+    .lb44,  
+    .church,
+    .churchh,
+    .til1,
+    .dot2, 
+    .til-check  {
+        font-size: calc((10 / 500) * 100vw);
+    }
+
+    .lb22, .link-map, .our-sotry .story p,
+    .in-album, .album-anh, .in-fe, .in-fee,
+    .boxx-imgend p,
+    .inp-ten, .form-group .subtitle, textarea {
+        font-size: calc((12 / 500) * 100vw);
+    }
+
+    .lb4, .lb2, .lb-time, .lb-timee  {
+        font-size: calc((15 / 500) * 100vw);
+    }
+
+    .time-date, .til2{
+        font-size: calc((20 / 500) * 100vw);
+    }
+
+    .box-content .wife,
+    .box-content .husband {
+        font-size: calc((25 / 500) * 100vw);
+    }
+
+    .lb55, .lb-storyy {
+        font-size: calc((30 / 500) * 100vw);
+    }
+
+    .lb-formm {
+        font-size: calc((35 / 500) * 100vw);
+    }
+
+    .lb5, .lb-timelinee, .lb-dresss, 
+    .lb-dress, .lb-story, .lb-form {
+        font-size: calc((40 / 500) * 100vw);
+    }
+    
+    .lb6 {
+        font-size: calc((25 / 500) * 100vw);
+    }
+
+    .inv {
+        font-size: calc((80 / 500) * 100vw);
+    }
+
+    .box-icon {
+        max-width: calc((350 / 500) * 100vw);
+    }
+
+    .fa-solid {
+        font-size: calc((15 / 500) * 100vw);
+    }
+
+
+    .box-dress .dresscode .color-item {
+        max-width: calc((40 / 500) * 100vw);
+    }
+
+    .dresscode-images .photo-box {
+        max-width: calc((265 / 500) * 100vw);
+    }
+
+    .our-sotry .story .icon img {
+        max-width: calc((40 / 500) * 100vw);
+    }
+
+    .our-sotry .story .img-story,  .album-anh {
+        max-width: calc((300 / 500) * 100vw);
+    }
+    .box-feed {
+        width: calc((120 / 500) * 100vw);
+    }
+
+    .box-save .logo {
+        max-width: calc((80 / 500) * 100vw);
+    }
+
+    .check-box, .check-box2{
+        max-width: calc((140 / 500) * 100vw);
+    }
+
+    .check-box2 {
+        max-width: calc((180 / 500) * 100vw);
+        font-size: calc((10 / 500) * 100vw);
+    }
+
+    .inp-ten, textarea {
+        width: calc((400 / 500) * 100vw);
+    }
+
+    .boxx-imgend img {
+        max-width: calc((160 / 500) * 100vw);
+    }
+}
